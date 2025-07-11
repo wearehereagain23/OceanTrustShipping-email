@@ -8,9 +8,9 @@ const path = require('path');
 
 
 app.use(
-  express.urlencoded({
-    extended: true,
-  })
+    express.urlencoded({
+        extended: true,
+    })
 )
 
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use(express.static(ff));
 
 
 app.get('/', (request, response) => {
-  response.sendFile(__dirname + '/src')
+    response.sendFile(__dirname + '/src')
 });
 
 
@@ -33,26 +33,26 @@ app.get('/', (request, response) => {
 app.post('/admin/invoice.html', async (req, res) => {
 
 
-  let info = req.body
+    let info = req.body
 
-  var transporter = nodemailer.createTransport({
-    host: 'mail.assistin.online',
-    secureConnection: true,
-    port: 465,
-    service: 'SMTP',
-    auth: {
-      user: "oceantrust@assistin.online",
-      pass: "Deeshipping@2025"
-    },
-    from: "oceantrust@assistin.online",
-  });
+    var transporter = nodemailer.createTransport({
+        host: 'mail.assistin.online',
+        secureConnection: true,
+        port: 465,
+        service: 'SMTP',
+        auth: {
+            user: "oceantrust@assistin.online",
+            pass: "Deeshipping@2025"
+        },
+        from: "oceantrust@assistin.online",
+    });
 
-  const mail_option = {
-    from: `oceantrust@assistin.online`,
-    to: info.useremail,
-    subject: "New Message From Oceantrust ",
-    html:
-      `<!DOCTYPE html
+    const mail_option = {
+        from: `oceantrust@assistin.online`,
+        to: info.useremail,
+        subject: "New Message From Oceantrust ",
+        html:
+            `<!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
 
@@ -570,27 +570,7 @@ app.post('/admin/invoice.html', async (req, res) => {
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0;width:360px">
-                                                                    <table width="100%" cellspacing="0" cellpadding="0"
-                                                                        role="presentation"
-                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                                                        <tr>
-                                                                            <td align="right" class="es-m-p20t"
-                                                                                style="padding:0;Margin:0;padding-top:25px">
-                                                                                <h6 class="es-m-txt-r"
-                                                                                    style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:16px;font-style:normal;font-weight:normal;line-height:19px;color:#333333">
-                                                                                    <strong>Invoice To</strong>
-                                                                                </h6>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td align="right"
-                                                                                style="padding:0;Margin:0;padding-top:5px">
-                                                                                <h6 class="es-m-txt-r"
-                                                                                    style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:16px;font-style:normal;font-weight:normal;line-height:19px;color:#333333">
-                                                                                    ${info.name}</h6>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -629,11 +609,7 @@ app.post('/admin/invoice.html', async (req, res) => {
                                                                     <p
                                                                         style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
                                                                         ​</p>
-                                                                    <p
-                                                                        style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                                                        We appreciate your trust in our services and we
-                                                                        are committed to providing you with the best
-                                                                        possible experience.</p>
+
                                                                     <p
                                                                         style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
                                                                         ​</p>
@@ -675,34 +651,20 @@ app.post('/admin/invoice.html', async (req, res) => {
                                                                         class="es-table"
                                                                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%"
                                                                         role="presentation">
-                                                                        <tr>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:36px;background-color:#0b94dd;border-style:solid;border-color:#333333">
-                                                                                <strong> &nbsp; Package</strong>
-                                                                            </td>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:36px;background-color:#0b94dd;border-style:solid;border-color:#333333">
-                                                                                &nbsp; <strong>Quantity</strong></td>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:36px;width:273px;border-color:#333333;background-color:#0b94dd;border-style:solid">
-                                                                                &nbsp; <strong>Description</strong></td>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:36px;background-color:#0b94dd;border-style:solid;border-color:#333333">
-                                                                                &nbsp; <strong>Weight</strong></td>
-                                                                        </tr>
+                                                                   
                                                                         <tr>
                                                                             <td
                                                                                 style="padding:0;Margin:0;height:40px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;${info.packagename}</td>
+                                                                                &nbsp;<p>Package</p>:${info.packagename}</td>
                                                                             <td
                                                                                 style="padding:0;Margin:0;height:40px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;${info.quantity}</td>
+                                                                                &nbsp;<p>Quantity</p>:${info.quantity}</td>
                                                                             <td
                                                                                 style="padding:0;Margin:0;height:40px;width:273px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;${info.description}</td>
+                                                                                &nbsp;<p>Description</p>:${info.description}</td>
                                                                             <td
                                                                                 style="padding:0;Margin:0;height:40px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;${info.weight}</td>
+                                                                                &nbsp;<p>Weight</p>:${info.weight}</td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
@@ -738,10 +700,7 @@ app.post('/admin/invoice.html', async (req, res) => {
                                                             <tr>
                                                                 <td align="left" class="es-text-6595"
                                                                     style="padding:0;Margin:0">
-                                                                    <h6
-                                                                        style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:16px;font-style:normal;font-weight:normal;line-height:19px;color:#333333">
-                                                                        <strong>Shipment Fee</strong>
-                                                                    </h6>
+
                                                                     <table cellpadding="0" cellspacing="0"
                                                                         class="es-table"
                                                                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%"
@@ -984,21 +943,21 @@ app.post('/admin/invoice.html', async (req, res) => {
 </body>
 
 </html>`
-  }
+    }
 
 
-  try {
-    const info2 = await transporter.sendMail(mail_option);
+    try {
+        const info2 = await transporter.sendMail(mail_option);
 
-    console.log("Email sent: ", info2);
+        console.log("Email sent: ", info2);
 
-    res.send("Email sent successfully!");
+        res.send("Email sent successfully!");
 
 
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).send("Failed to send email.");
-  }
+    } catch (error) {
+        console.error("Error sending email:", error);
+        res.status(500).send("Failed to send email.");
+    }
 
 });
 
@@ -1006,5 +965,5 @@ app.post('/admin/invoice.html', async (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`this project is working fine at http://localhost:${port}`)
+    console.log(`this project is working fine at http://localhost:${port}`)
 });
