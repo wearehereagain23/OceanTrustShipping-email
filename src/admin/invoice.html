@@ -1,0 +1,146 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+
+    <script type="module">
+
+        function showSpinnerModal() {
+            document.getElementById('spinnerModal').style.display = 'flex';
+        }
+
+        function hideSpinnerModal() {
+            document.getElementById('spinnerModal').style.display = 'none';
+        }
+        showSpinnerModal();
+
+        const url = window.location.search;
+        const urldata = new URLSearchParams(url);
+        const i = urldata.get("i");
+
+        let invoiceCode = Math.floor(Math.random() * 373254);
+
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+        const supabaseUrl = 'https://rtxdbewkujhdhqlperjn.supabase.co'
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0eGRiZXdrdWpoZGhxbHBlcmpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE4MDE4NTksImV4cCI6MjA2NzM3Nzg1OX0.yatihMzxJcMOVeKOKYU17R71VDKlu8N5DM_5BSoIylA'
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+
+
+        async function fetchData() {
+
+            const { data, error } = await supabase
+                .from('OceanTrust')
+                .select('*')
+                .eq('trackingcode', i);
+            if (error) {
+                console.error('Error fetching data:', error);
+            } else {
+                data.forEach(async (doc) => {
+
+                    let formData3 = {
+                        useremail: doc.INVemail,
+                        p1: doc.p1,
+                        p2: doc.p2,
+                        p3: doc.p3,
+                        packagename: doc.package,
+                        quantity: doc.totalquantity,
+                        weight: doc.totalweight,
+                        description: doc.des,
+                        exd: doc.express,
+                        scd: doc.second,
+                        tcd: doc.third,
+                        code: invoiceCode,
+                        name: doc.INVname,
+                    }
+
+
+
+                    const options = {
+                        method: 'POST',
+
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(formData2),
+                    }
+
+                    const response = await fetch('/admin/invoice.html', options);
+
+                    console.log(response.ok)
+                    if (response.ok) {
+                        window.history.back();
+                    } else {
+                        window.history.back();
+                    }
+
+
+                })
+            }
+        } fetchData();
+
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <!-- SPINNER DIV -->
+    <div id="spinnerModal" class="spinner-modal" style="display: none;">
+        <div class="spinner-content">
+            <div class="spinner"></div>
+            <p>Loading, please wait...</p>
+        </div>
+    </div>
+    <!-- SPINNER DIV -->
+
+    <!-- SPINNER CSS -->
+    <style>
+        .spinner-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.938);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .spinner-content {
+            text-align: center;
+            color: white;
+        }
+
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ffffff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>
