@@ -647,26 +647,7 @@ app.post('/admin/invoice.html', async (req, res) => {
                                                                     <p
                                                                         style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
                                                                         ​</p>
-                                                                    <table cellpadding="0" cellspacing="0"
-                                                                        class="es-table"
-                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%"
-                                                                        role="presentation">
-                                                                   
-                                                                        <tr>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:40px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;<p>Package</p>:${info.packagename}</td>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:40px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;<p>Quantity</p>:${info.quantity}</td>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:40px;width:273px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;<p>Description</p>:${info.description}</td>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;height:40px;border-style:solid;border-color:#333333">
-                                                                                &nbsp;<p>Weight</p>:${info.weight}</td>
-                                                                        </tr>
-                                                                    </table>
+
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -689,6 +670,29 @@ app.post('/admin/invoice.html', async (req, res) => {
                                     <tr>
                                         <td align="left"
                                             style="Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;padding-bottom:20px">
+                                            <table style="border-collapse: collapse; width: 300px;">
+
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">Package Name</td>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">
+                                                        ${info.packagename}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">Total Quantity</td>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">${info.quantity}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">Full Description</td>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">
+                                                        ${info.description}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">Total Weight
+                                                    </td>
+                                                    <td style="border: 1px solid #ccc; padding: 8px;">${info.weight}</td>
+                                                </tr>
+                                            </table>
                                             <table cellspacing="0" cellpadding="0" align="right" class="es-right"
                                                 role="none"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
